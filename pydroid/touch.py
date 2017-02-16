@@ -88,7 +88,7 @@ def drag(start_x, start_y, end_x, end_y):
 
 
 def pinch_zoom(focus_x, focus_y, zoom_level, zoom_in=True):
-    # TODO : Not working
+    # Root permission required
     input_device = _adb.get_input_device_touch()
     zoom = zoom_level * 50
 
@@ -113,3 +113,5 @@ def _touch_start_end(input_device):
 def _touch(input_device, x, y):
     _adb.shell('sendevent ' + input_device + ': 0003 0035 ' + ('%08X' % x))
     _adb.shell('sendevent ' + input_device + ': 0003 0036 ' + ('%08X' % y))
+
+# http://androidxref.com/4.4_r1/xref/prebuilts/ndk/6/platforms/android-9/arch-arm/usr/include/linux/input.h
